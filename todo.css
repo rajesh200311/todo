@@ -7,10 +7,18 @@ h1{
 }
 
 
-.result-grid,
 .main-br{
+
+
+display: grid;
+  grid-template-columns: 200px 150px 150px 100px;
+  column-gap: 13px;
+  row-gap: 13px;
+}
+
+.result-grid{
   display: grid;
-  grid-template-columns: 200px 150px 100px;
+  grid-template-columns: 200px 150px 150px 100px;
   column-gap: 13px;
   row-gap: 13px;
 }
