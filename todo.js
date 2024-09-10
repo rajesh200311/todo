@@ -35,7 +35,7 @@ function todo() {
   const Timer = timeEle.value;
 
   if (name.trim() === '' || dueDate.trim() === ''||Timer.trim()=='' ) {
-    alert('Please fill in all fields (task name, date and time).');
+    alert('Please fill in all fields (task name, date and).');
     return;
 
   }
@@ -47,8 +47,27 @@ function todo() {
   });
 
   inputElement.value = '';
-  dataInputElement.value='';
+  dateInputElement.value = '';
   timeEle.value = '';
 
   renderTodoList();
+}
+function downloadPDF() {
+  if (todoList.length === 0) {
+    alert('No tasks to download.');
+    return;
+  }
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  let todoListContent = '';
+
+  for (let i = 0; i < todoList.length; i++) {
+    const todoObject = todoList[i];
+    const { name, dueDate, Timer } = todoObject;
+    todoListContent += `Task: ${name}, DUE-DATE: ${dueDate}, Time: ${Timer}\n`;
+  }
+
+  doc.text(todoListContent, 10, 10);
+  doc.save('todo-list.pdf');
 }
