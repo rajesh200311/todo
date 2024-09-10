@@ -47,6 +47,8 @@ function todo() {
   });
 
   inputElement.value = '';
+  dataInputElement.value='';
+  timeEle.value = '';
 
   renderTodoList();
 }
